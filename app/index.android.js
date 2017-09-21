@@ -11,9 +11,21 @@ import {
   Text,
   View
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-export default class clinicalTrialApp extends Component {
+// Importing scenes for our app
+import Home from './Home';
+import Movie from './Movie';
+import Splash from './Splash';
+
+class clinicalTrialApp extends Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+
   render() {
+    return <Text>Hello, Navigation!</Text>;
+    
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
