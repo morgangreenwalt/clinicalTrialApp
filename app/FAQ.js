@@ -38,24 +38,31 @@ export default class FAQ extends Component {
                       </Row>
                   </form>
 
-                  <View styles={styles.questions}>
+                  <View style={styles.questions}>
                       <Row>   
-                          <Text h4 styles={styles.question}>Questions</Text>
+                          <Text h4 style={styles.question}>Questions</Text>
 
-                          <Text styles={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
 
-                          <Text h4 styles={styles.question}>Questions</Text>
+                          <Text h4 style={styles.question}>Questions</Text>
 
-                          <Text styles={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
                       </Row>
                   </View>    
               </Grid>
-              <Grid>
-                  <Row>
-                      <Text h2 styles={styles.contactText}>Can't Find Your Answer?</Text>
-                      <Button raised icon={{name: 'cached'}} title='Conact Us' />
-                  </Row>
-              </Grid>
+
+            <View style={{ flex: 1}}>
+                <View style={{position: 'absolute', top: 0, left: 0, backgroundColor: '#8DC73F', width: '100%', height: '100%'}} >
+                </View>
+
+                <View style={{ flex: 1, backgroundColor: 'transparent', justifyContent: 'center',}}>
+                    <Text style={{ textAlign: 'center', fontSize: 24, marginBottom: 20}}>
+                        {"Can't Find Your Answer?"}
+                    </Text>
+                    <Button raised icon={{name: 'cached'}} title='Conact Us' />
+                </View>
+            </View>
+
         </View>
     );
   }
@@ -86,22 +93,22 @@ contactText: {
     paddingBottom: 20
 },
 
-contactBtn: {
-    border: 2.5 'solid' '#fff'
-    backgroundColor: '#8DC73F'
-},
+// contactBtn: {
+//     border: 2.5 'solid' '#fff'
+//     backgroundColor: '#8DC73F'
+// },
 
-contactBtn2: {
-    border: 2.5 'solid' '#000'
-},
+// contactBtn2: {
+//     border: 2.5 'solid' '#000'
+// },
 
-searchBtn: {
-    border: 2.5 'solid' '#8DC73F',
-    backgroundColor: '#fff'
-},
+// searchBtn: {
+//     border: 2.5 'solid' '#8DC73F',
+//     backgroundColor: '#fff'
+// },
 
 a: {
-    color: 'inherit'
+    color: '#000'
 }
 
 });

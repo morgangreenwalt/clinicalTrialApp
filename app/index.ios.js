@@ -96,28 +96,31 @@ import {
   Text,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+// import { StackNavigator } from 'react-navigation';
+import HTMLView from 'react-native-htmlview';
 
 // Importing components
-import Nav from "./Nav";
 import Footer from "./Footer";
 import FAQ from "./FAQ";
 import Hero from "./Hero";
 import Login from "./Login";
+import Header from "./Header";
 
-class clinicalTrialApp extends Component {
+class ClinicalTrialApp extends Component {
   static navigationOptions = {
     title: 'Welcome',
   };
 
   render() {
-    return <Text>Hello, Navigation!</Text>;
+    const htmlContent = `<p><a href="/FAQ.js"></a> nice job!</p>`;
     
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
+        
+        <HTMLView value={htmlContent} stylesheet={styles} />
         <Text style={styles.instructions}>
           To get started, edit index.android.js
         </Text>
@@ -149,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('clinicalTrialApp', () => clinicalTrialApp);
+AppRegistry.registerComponent('clinicalTrialApp', () => ClinicalTrialApp);

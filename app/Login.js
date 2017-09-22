@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { View, Text, Image, Picker, TouchableHighlight, TouchableOpacity, StyleSheet, Dimensions, Platform, TextInput } from 'react-native';
 import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 
+import Header from "./Header";
+import Footer from "./Footer";
+import FAQ from "./FAQ";
+import Hero from "./Hero";
+
 export default class Login extends Component {
     render() {
         return(
             <Grid>
-                <View styles={styles.jumbotron}>
+                <View style={styles.jumbotron}>
                     <h1 className="text-center"><i className="fa fa-facebook-square" aria-hidden="true"></i> Clinical Trial</h1>
                     <h3 className="text-justify">Bypass slow communication and login with your clinical trial number to get information and answers from doctors quickly and efficiencly!</h3><br/>
 
