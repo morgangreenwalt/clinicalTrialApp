@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import FAQ from "./FAQ";
 import Login from "./Login";
 
-export default class Login extends Component {  
+export default class Contact extends Component {  
     constructor(props){
         super(props)
     }
@@ -25,7 +25,18 @@ export default class Login extends Component {
                 <Image style={styles.icon} resizeMode="contain" />
               </View>
               <TextInput 
-                placeholder="Username" 
+                placeholder="Name" 
+                placeholderTextColor="#FFF"
+                style={styles.input} 
+              />
+            </View>
+
+            <View style={styles.inputWrap}>
+              <View style={styles.iconWrap}>
+                <Image style={styles.icon} resizeMode="contain" />
+              </View>
+              <TextInput 
+                placeholder="Email" 
                 placeholderTextColor="#FFF"
                 style={styles.input} 
               />
@@ -37,37 +48,30 @@ export default class Login extends Component {
               </View>
               <TextInput 
                 placeholderTextColor="#FFF"
-                placeholder="Password" 
+                placeholder="Topic" 
+                style={styles.input} 
+                secureTextEntry 
+              />
+            </View>
+
+            <View style={styles.inputWrap}>
+              <View style={styles.iconWrap}>
+                <Image style={styles.icon} resizeMode="contain" />
+              </View>
+              <TextInput 
+                placeholderTextColor="#FFF"
+                placeholder="Question" 
                 style={styles.input} 
                 secureTextEntry 
               />
             </View>
 
             <TouchableOpacity activeOpacity={.5}>
-              <View>
-                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity activeOpacity={.5}>
               <View style={styles.button}>
-                <Text style={styles.buttonText}>Sign In</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
 
-          </View>
-
-          <View style={styles.container}>
-            <View style={styles.signupWrap}>
-              <Text style={styles.accountText}>Don't have an account?</Text>
-
-              <TouchableOpacity activeOpacity={.5}>
-                <View>
-                  <Text style={styles.signupLinkText}>Sign Up</Text>
-                </View>
-              </TouchableOpacity>
-
-            </View>
           </View>
       </View>
     );

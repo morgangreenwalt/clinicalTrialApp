@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import FAQ from "./FAQ";
 import Login from "./Login";
 
-export default class Login extends Component {  
+export default class SignUp extends Component {  
     constructor(props){
         super(props)
     }
@@ -19,6 +19,17 @@ export default class Login extends Component {
       <View style={styles.container}>
        
           <View style={styles.wrapper}>
+
+            <View style={styles.inputWrap}>
+              <View style={styles.iconWrap}>
+                <Image style={styles.icon} resizeMode="contain" />
+              </View>
+              <TextInput 
+                placeholder="ClinicalTrialNum" 
+                placeholderTextColor="#FFF"
+                style={styles.input} 
+              />
+            </View>
 
             <View style={styles.inputWrap}>
               <View style={styles.iconWrap}>
@@ -38,6 +49,18 @@ export default class Login extends Component {
               <TextInput 
                 placeholderTextColor="#FFF"
                 placeholder="Password" 
+                style={styles.input} 
+                secureTextEntry 
+              />
+            </View>
+
+            <View style={styles.inputWrap}>
+              <View style={styles.iconWrap}>
+                <Image style={styles.icon} resizeMode="contain" />
+              </View>
+              <TextInput 
+                placeholderTextColor="#FFF"
+                placeholder="ReEnterPassword" 
                 style={styles.input} 
                 secureTextEntry 
               />
