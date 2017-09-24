@@ -5,7 +5,7 @@ import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 // Importing components
 import Hero from "./Hero";
 import Footer from "./Footer";
-import FAQ from "./FAQ";
+import Faq from "./FAQ";
 import Header from "./Header";
 import Container from './Container';
 
@@ -40,7 +40,7 @@ export default class Login extends Component {
                
               </View>
               <TextInput 
-              placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(password) => this.setState({password})} value={this.state.password}
+              placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(password) => this.setState({password})} value={this.state.password} secureTextEntry 
               />
             </View>
 

@@ -15,13 +15,11 @@ import Container from './Container';
 import { TabRouter } from 'react-navigation';
 
 // Importing components
-// import Header from "./Header";
-// import Footer from "./Footer";
-import FAQ from "./FAQ";
+import Faq from "./FAQ";
 import Login from "./Login";
-import SignUp from "./SignUp";
-// import Hero from "./Hero";
 import Contact from "./Contact";
+import Search from "./Search";
+import SignUp from "./SignUp";
 
 
 const uiTheme = {
@@ -40,8 +38,9 @@ const uiTheme = {
 const TabRoute = TabRouter({
   SignUp: { screen: SignUp },
   Login: { screen: Login },
-  FAQ: { screen: FAQ },
-  Contact: { screen: Contact }
+  FAQ: { screen: Faq },
+  Contact: { screen: Contact },
+  Search: { screen: Search }
   }, {
     initialRouteName: 'Login',
   }
@@ -109,6 +108,14 @@ export default class Router extends Component {
               label="FAQ"
               onPress={() => {
                 this.setState({ active: 'FAQ' });
+              }}
+            />
+            <BottomNavigation.Action
+              key="Search"
+              icon="person"
+              label="Search"
+              onPress={() => {
+                this.setState({ active: 'Search' });
               }}
             />
             <BottomNavigation.Action

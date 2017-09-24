@@ -5,7 +5,7 @@ import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 // Importing components
 import Hero from "./Hero";
 import Footer from "./Footer";
-import FAQ from "./FAQ";
+import Faq from "./FAQ";
 import Login from "./Login";
 import Container from './Container';
 

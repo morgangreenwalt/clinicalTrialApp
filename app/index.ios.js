@@ -1,87 +1,3 @@
-// /**
-//  * Sample React Native App
-//  * https://github.com/facebook/react-native
-//  * @flow
-//  */
-
-// import React, { Component } from 'react';
-// import {
-//   AppRegistry,
-//   StyleSheet,
-//   Text,
-//   View
-// } from 'react-native';
-// import { TabNavigator } from 'react-navigation';
-
-// // Importing scenes for our app
-// import FAQ from './FAQ';
-// import Movie from './Movie';
-// import Splash from './Splash';
-
-// class ClinicalTrialApp extends React.Component {
-//   static navigationOptions = {
-//     tabBarLabel: 'Home',
-//     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-//     tabBarIcon: ({ tintColor }) => (
-//       <Image
-//         source={require('./chats-icon.png')}
-//         style={[styles.icon, {tintColor: tintColor}]}
-//       />
-//     ),
-//   };
-
-//   render() {
-//     return (
-//       <Button
-//         onPress={() => this.props.navigation.navigate('Notifications')}
-//         title="Go to notifications"
-//       />
-//     );
-//   }
-// }
-
-// class MyNotificationsScreen extends React.Component {
-//   static navigationOptions = {
-//     tabBarLabel: 'Notifications',
-//     tabBarIcon: ({ tintColor }) => (
-//       <Image
-//         source={require('./notif-icon.png')}
-//         style={[styles.icon, {tintColor: tintColor}]}
-//       />
-//     ),
-//   };
-
-//   render() {
-//     return (
-//       <Button
-//         onPress={() => this.props.navigation.goBack()}
-//         title="Go back home"
-//       />
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   icon: {
-//     width: 26,
-//     height: 26,
-//   },
-// });
-
-// const MyApp = TabNavigator({
-//   Home: {
-//     screen: ClinicalTrialApp,
-//   },
-//   Notifications: {
-//     screen: MyNotificationsScreen,
-//   },
-// }, {
-//   tabBarPosition: 'top',
-//   animationEnabled: true,
-//   tabBarOptions: {
-//     activeTintColor: '#e91e63',
-//   },
-// });
 
 /**
  * Sample React Native App
@@ -102,19 +18,21 @@ import { DrawerNavigator, StackNavigator } from 'react-navigation';
 
 // Importing components
 import Footer from "./Footer";
-import FAQ from "./FAQ";
+import Faq from "./FAQ";
 import Hero from "./Hero";
 import Login from "./Login";
 import Header from "./Header";
 import SignUp from "./SignUp";
 import Contact from "./Contact";
+import Search from "./Search";
 import Router from './router';
 
 const stackNavigator = StackNavigator({
   SignUp: { screen: SignUp },
   Login: { screen: Login },
-  FAQ: { screen: FAQ },
+  FAQ: { screen: Faq },
   Contact: { screen: Contact },
+  Search: { screen: Search },
 }, {
   headerMode: 'none'
 });
@@ -136,48 +54,5 @@ const ClinicalTrialApp = DrawerNavigator({
     }
   }
 });
-
-// class ClinicalTrialApp extends Component {
-
-//   render() {
-//     const htmlContent = `<p><a href="/FAQ.js"></a> nice job!</p>`;
-    
-//     return (
-//       <View style={styles.container}>
-//         <Text style={styles.welcome}>
-//           Welcome to React Native!
-//         </Text>
-        
-//         <HTMLView value={htmlContent} stylesheet={styles} />
-//         <Text style={styles.instructions}>
-//           To get started, edit index.android.js
-//         </Text>
-//         <Text style={styles.instructions}>
-//           Double tap R on your keyboard to reload,{'\n'}
-//           Shake or press menu button for dev menu
-//         </Text>
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-//   instructions: {
-//     textAlign: 'center',
-//     color: '#333333',
-//     marginBottom: 5,
-//   },
-// });
 
 AppRegistry.registerComponent('clinicalTrialApp', () => ClinicalTrialApp);

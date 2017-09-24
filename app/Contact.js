@@ -3,17 +3,22 @@ import { View, Text, Image, Picker, TouchableHighlight, TouchableOpacity, TextIn
 import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 
 // Importing components
-import Hero from "./Hero";
 import Footer from "./Footer";
-import FAQ from "./FAQ";
-import Login from "./Login";
 import Header from "./Header";
 import Container from './Container';
+const Item = Picker.Item;
 
 export default class Contact extends Component {  
     constructor(props){
-        super(props)
-    }
+    super(props)
+    this.state = {
+      name: '',
+      email: '',
+      topic: '',
+      inquiry: '',
+      faqTopic: ''
+    };
+}
 
     render() {
 
@@ -28,8 +33,8 @@ export default class Contact extends Component {
               </View>
               <TextInput 
                 placeholder="Name" 
-                placeholderTextColor="#FFF"
-                style={styles.input} 
+                placeholderTextColor="#C0C0C0"
+                style={styles.input} onChangeText={(name) => this.setState({name})} value={this.state.name}
               />
             </View>
 
@@ -38,33 +43,36 @@ export default class Contact extends Component {
                 <Image style={styles.icon} resizeMode="contain" />
               </View>
               <TextInput 
-                placeholder="Email" 
-                placeholderTextColor="#FFF"
-                style={styles.input} 
+                placeholder="Email" placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(email) => this.setState({email})} value={this.state.email}
               />
+              
             </View>
+
+            <View syle={{flexDirection: 'row', flex: 1}}>
+              <Text style={{color: '#C0C0C0', marginLeft: 40, fontSize: 18, alignItems: "center", justifyContent: "center"}}>Select Topic</Text>
+              <Picker style={styles.picker} selectedValue={this.state.faqTopic} onValueChange={(topic) => this.setState({faqTopic: topic})}>
+                <Item label="Eligibility" value="eligibility" />
+                <Item label="Recurrence" value="recurrence" />
+                <Item label="Concomitant Meds" value="concomitantMeds" />
+                <Item label="Adverse Event" value="adverseEvent" />
+                <Item label="Randomization" value="randomization" />
+                <Item label="Tumor Assessment" value="tumorAssessment" />
+                <Item label="Study Procedures" value="studyProcedures" />
+                <Item label="Study Drug" value="studyDrug" />
+                <Item label="Labs" value="labs" />
+                <Item label="Regulatory" value="regulatory" />
+                <Item label="Other" value="other" />
+              </Picker>
+            </View> 
 
             <View style={styles.inputWrap}>
               <View style={styles.iconWrap}>
                 <Image style={styles.icon} resizeMode="contain" />
               </View>
               <TextInput 
-                placeholderTextColor="#FFF"
-                placeholder="Topic" 
-                style={styles.input} 
-                secureTextEntry 
-              />
-            </View>
-
-            <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-              </View>
-              <TextInput 
-                placeholderTextColor="#FFF"
-                placeholder="Question" 
-                style={styles.input} 
-                secureTextEntry 
+                placeholderTextColor="#C0C0C0"
+                placeholder="Enter Comments/ Questions Here..." 
+                style={styles.input} onChangeText={(inquiry) => this.setState({inquiry})} value={this.state.inquiry}
               />
             </View>
 
@@ -108,6 +116,7 @@ const styles = StyleSheet.create({
     input: {
       flex: 1,
       paddingHorizontal: 10,
+      color: '#C0C0C0',
     },
     button: {
       backgroundColor: "#FF3366",

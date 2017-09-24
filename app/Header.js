@@ -5,7 +5,7 @@ import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 // Importing components
 import Hero from "./Hero";
 import Footer from "./Footer";
-import FAQ from "./FAQ";
+import Faq from "./FAQ";
 import Login from "./Login";
 
 export default class Header extends Component {  
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#8DC73F'
+    backgroundColor: '#8DC73F',
+    flexDirection: 'row'
   },
 
   headerText: {
