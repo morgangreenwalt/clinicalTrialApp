@@ -3,19 +3,23 @@ import { View, Text, Image, Picker, TouchableHighlight, TouchableOpacity, StyleS
 import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 // import Picker from 'react-native-picker';
 
+import Container from './Container';
+import Hero from './Hero';
+import Footer from './Footer';
+
 export default class FAQ extends Component {
 
 
   render() {
     return (
         <View styles={styles.faq}>
-           
+           <Hero/>
               <Grid>
                   <form action="/" method="POST">
                       <Row>
-                          <Picker
-                            selectedValue={this.state.faqTopic}
-                            onValueChange={(itemValue, itemIndex) => this.setState({faqTopic: itemValue})}>
+                          <Picker>
+                            // selectedValue={this.state.faqTopic}
+                            // onValueChange={(itemValue, itemIndex) => this.setState({faqTopic: itemValue})}>
                             <Picker.Item label="Eligibility" value="eligibility" />
                             <Picker.Item label="Recurrence" value="recurrence" />
                             <Picker.Item label="Concomitant Meds" value="concomitantMeds" />
@@ -62,7 +66,7 @@ export default class FAQ extends Component {
                     <Button raised icon={{name: 'cached'}} title='Conact Us' />
                 </View>
             </View>
-
+            <Footer/>
         </View>
     );
   }

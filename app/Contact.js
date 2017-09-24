@@ -7,6 +7,8 @@ import Hero from "./Hero";
 import Footer from "./Footer";
 import FAQ from "./FAQ";
 import Login from "./Login";
+import Header from "./Header";
+import Container from './Container';
 
 export default class Contact extends Component {  
     constructor(props){
@@ -17,7 +19,7 @@ export default class Contact extends Component {
 
         return (
       <View style={styles.container}>
-       
+        <Header/>
           <View style={styles.wrapper}>
 
             <View style={styles.inputWrap}>
@@ -73,6 +75,7 @@ export default class Contact extends Component {
             </TouchableOpacity>
 
           </View>
+          <Footer/>
       </View>
     );
   }

@@ -6,18 +6,23 @@ import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 import Hero from "./Hero";
 import Footer from "./Footer";
 import FAQ from "./FAQ";
-import Login from "./Login";
+import Header from "./Header";
+import Container from './Container';
 
 export default class Login extends Component {  
     constructor(props){
         super(props)
+        this.state = {
+          username: 'Username',
+          password: 'Password'
+        };
     }
 
     render() {
 
         return (
       <View style={styles.container}>
-       
+          <Header/>
           <View style={styles.wrapper}>
 
             <View style={styles.inputWrap}>
@@ -25,29 +30,19 @@ export default class Login extends Component {
                 <Image style={styles.icon} resizeMode="contain" />
               </View>
               <TextInput 
-                placeholder="Username" 
-                placeholderTextColor="#FFF"
-                style={styles.input} 
+                placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(username) => this.setState({username})} value={this.state.username}
               />
             </View>
 
             <View style={styles.inputWrap}>
               <View style={styles.iconWrap}>
                 <Image style={styles.icon} resizeMode="contain" />
+               
               </View>
               <TextInput 
-                placeholderTextColor="#FFF"
-                placeholder="Password" 
-                style={styles.input} 
-                secureTextEntry 
+              placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(password) => this.setState({password})} value={this.state.password}
               />
             </View>
-
-            <TouchableOpacity activeOpacity={.5}>
-              <View>
-                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-              </View>
-            </TouchableOpacity>
 
             <TouchableOpacity activeOpacity={.5}>
               <View style={styles.button}>

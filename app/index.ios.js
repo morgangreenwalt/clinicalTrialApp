@@ -98,6 +98,7 @@ import {
 } from 'react-native';
 // import { StackNavigator } from 'react-navigation';
 import HTMLView from 'react-native-htmlview';
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
 
 // Importing components
 import Footer from "./Footer";
@@ -105,51 +106,78 @@ import FAQ from "./FAQ";
 import Hero from "./Hero";
 import Login from "./Login";
 import Header from "./Header";
+import SignUp from "./SignUp";
+import Contact from "./Contact";
+import Router from './router';
 
-class ClinicalTrialApp extends Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-
-  render() {
-    const htmlContent = `<p><a href="/FAQ.js"></a> nice job!</p>`;
-    
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        
-        <HTMLView value={htmlContent} stylesheet={styles} />
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+const stackNavigator = StackNavigator({
+  SignUp: { screen: SignUp },
+  Login: { screen: Login },
+  FAQ: { screen: FAQ },
+  Contact: { screen: Contact },
+}, {
+  headerMode: 'none'
 });
+
+const ClinicalTrialApp = DrawerNavigator({
+  Home: {
+    screen: Router,
+  },
+  Stack: {
+    screen: stackNavigator
+  }
+}, {
+  // contentComponent: DrawerMenu,
+  contentOptions: {
+    activeTintColor: '#e91e63',
+    style: {
+      flex: 1,
+      paddingTop: 15,
+    }
+  }
+});
+
+// class ClinicalTrialApp extends Component {
+
+//   render() {
+//     const htmlContent = `<p><a href="/FAQ.js"></a> nice job!</p>`;
+    
+//     return (
+//       <View style={styles.container}>
+//         <Text style={styles.welcome}>
+//           Welcome to React Native!
+//         </Text>
+        
+//         <HTMLView value={htmlContent} stylesheet={styles} />
+//         <Text style={styles.instructions}>
+//           To get started, edit index.android.js
+//         </Text>
+//         <Text style={styles.instructions}>
+//           Double tap R on your keyboard to reload,{'\n'}
+//           Shake or press menu button for dev menu
+//         </Text>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#F5FCFF',
+//   },
+//   welcome: {
+//     fontSize: 20,
+//     textAlign: 'center',
+//     margin: 10,
+//   },
+//   instructions: {
+//     textAlign: 'center',
+//     color: '#333333',
+//     marginBottom: 5,
+//   },
+// });
 
 AppRegistry.registerComponent('clinicalTrialApp', () => ClinicalTrialApp);

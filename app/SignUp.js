@@ -7,6 +7,7 @@ import Hero from "./Hero";
 import Footer from "./Footer";
 import FAQ from "./FAQ";
 import Login from "./Login";
+import Container from './Container';
 
 export default class SignUp extends Component {  
     constructor(props){
