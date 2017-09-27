@@ -10,16 +10,16 @@ import { Navigator, NativeModules } from 'react-native';
 
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import { Toolbar, BottomNavigation, Icon } from 'react-native-material-ui';
-import Container from './Container';
+import Container from './components/Container';
 
 import { TabRouter } from 'react-navigation';
 
 // Importing components
-import Faq from "./FAQ";
-import Login from "./Login";
-import Contact from "./Contact";
-import Search from "./Search";
-import SignUp from "./SignUp";
+import Faq from "./components/FAQ";
+import Login from "./components/Login";
+import Contact from "./components/Contact";
+import Search from "./components/Search";
+import SignUp from "./components/SignUp";
 
 
 const uiTheme = {

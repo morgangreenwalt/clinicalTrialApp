@@ -17,14 +17,14 @@ import HTMLView from 'react-native-htmlview';
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
 
 // Importing components
-import Footer from "./Footer";
-import Faq from "./FAQ";
-import Hero from "./Hero";
-import Login from "./Login";
-import Header from "./Header";
-import SignUp from "./SignUp";
-import Contact from "./Contact";
-import Search from "./Search";
+import Footer from "./components/Footer";
+import Faq from "./components/FAQ";
+import Hero from "./components/Hero";
+import Login from "./components/Login";
+import Header from "./components/Header";
+import SignUp from "./components/SignUp";
+import Contact from "./components/Contact";
+import Search from "./components/Search";
 import Router from './router';
 
 const stackNavigator = StackNavigator({
