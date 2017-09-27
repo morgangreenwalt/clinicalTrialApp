@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontSize: 36,
-    color: 'white'
+    color: 'white',
+    // fontFamily: "Lato-Light",
   }
 });
