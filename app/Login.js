@@ -26,21 +26,14 @@ export default class Login extends Component {
           <View style={styles.wrapper}>
 
             <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-              </View>
               <TextInput 
-                placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(username) => this.setState({username})} value={this.state.username}
+                placeholder="Username" placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(username) => this.setState({username})} value={this.state.username}
               />
             </View>
 
             <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-               
-              </View>
               <TextInput 
-              placeholder="Username" placeholderTextColor="#FFF" style={styles.input} onChangeText={(password) => this.setState({password})} value={this.state.password} secureTextEntry 
+              placeholder="Username" placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(password) => this.setState({password})} value={this.state.password} secureTextEntry 
               />
             </View>
 
@@ -49,19 +42,15 @@ export default class Login extends Component {
                 <Text style={styles.buttonText}>Sign In</Text>
               </View>
             </TouchableOpacity>
-
           </View>
 
           <View style={styles.container}>
             <View style={styles.signupWrap}>
-              <Text style={styles.accountText}>Don't have an account?</Text>
-
               <TouchableOpacity activeOpacity={.5}>
                 <View>
-                  <Text style={styles.signupLinkText}>Sign Up</Text>
+                  <Text style={styles.signupLinkText}>Don't have an account? Sign Up</Text>
                 </View>
               </TouchableOpacity>
-
             </View>
           </View>
       </View>
@@ -82,30 +71,29 @@ const styles = StyleSheet.create({
       marginVertical: 10,
       height: 40,
       borderBottomWidth: 1,
-      borderBottomColor: "#CCC"
-    },
-    iconWrap: {
-      paddingHorizontal: 7,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    icon: {
-      height: 20,
-      width: 20,
+      borderBottomColor: "#CCC",
+      marginLeft: 30,
+      marginRight: 30,
     },
     input: {
       flex: 1,
       paddingHorizontal: 10,
+      // color: "#000",
     },
     button: {
-      backgroundColor: "#FF3366",
+      backgroundColor: '#8DC73F',
+      // borderColor: "#8DC73F",
+      // borderWidth: 4.5,
       paddingVertical: 20,
       alignItems: "center",
       justifyContent: "center",
+      marginLeft: 30,
+      marginRight: 30,
       marginTop: 30,
     },
     buttonText: {
       color: "#FFF",
+      // color: "#000",
       fontSize: 18,
     },
     forgotPasswordText: {
@@ -121,10 +109,13 @@ const styles = StyleSheet.create({
       justifyContent: "center",
     },
     accountText: {
-      color: "#D8D8D8"
+      color: "#D8D8D8",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center"
     },
     signupLinkText: {
-      color: "#FFF",
+      color: "#000",
       marginLeft: 5,
     }
   });

@@ -98,13 +98,13 @@ export default class Router extends Component {
           >
             <BottomNavigation.Action
               key="Login"
-              icon="today"
+              icon="person"
               label="Login"
               onPress={() => this.setState({ active: 'Login' })}
             />
             <BottomNavigation.Action
               key="FAQ"
-              icon="person"
+              icon="question-answer"
               label="FAQ"
               onPress={() => {
                 this.setState({ active: 'FAQ' });
@@ -112,7 +112,7 @@ export default class Router extends Component {
             />
             <BottomNavigation.Action
               key="Search"
-              icon="person"
+              icon="search"
               label="Search"
               onPress={() => {
                 this.setState({ active: 'Search' });
@@ -120,7 +120,7 @@ export default class Router extends Component {
             />
             <BottomNavigation.Action
               key="Contact"
-              icon="map"
+              icon="people"
               label="Contact"
               onPress={() => this.setState({ active: 'Contact' })}
             />

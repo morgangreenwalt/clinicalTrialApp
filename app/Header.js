@@ -16,20 +16,21 @@ export default class Header extends Component {
     render() {
 
         return(
-            <View style={styles.header}>
-                <Text style={styles.headerText}>Clinical Trial</Text>
-            </View>          
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Clinical Trial</Text>
+                </View>            
         )
     }
 }
+const height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#8DC73F',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    height: height/5
   },
 
   headerText: {

@@ -67,11 +67,14 @@ export default class Faq extends Component {
                     <Text style={{ textAlign: 'center', fontSize: 24, marginBottom: 20}}>
                         {"Can't Find Your Answer?"}
                     </Text>
-                    <Button raised icon={{name: 'cached'}} style={{backgroundColor: '#000'}} title='Contact Us' />
+                    <TouchableOpacity activeOpacity={.5}>
+                        <View style={styles.button}>
+                            <Text style={styles.buttonText}>Contact Us</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
-           <Footer/>
-            
+    
         </ScrollView>
     );
   }
@@ -118,17 +121,6 @@ inputWrap: {
     borderBottomColor: "#CCC"
   },
 
-  iconWrap: {
-    paddingHorizontal: 7,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  icon: {
-    height: 20,
-    width: 20,
-  },
-
   input: {
     flex: 1,
     // paddingHorizontal: 10,
@@ -151,7 +143,23 @@ a: {
 
 picker: {
     width: '100%',
-}
+},
+
+button: {
+    backgroundColor: '#8DC73F',
+    paddingVertical: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 50,
+    marginLeft: 50,
+    borderWidth: 2.5, 
+    borderColor: '#fff',
+  },
+
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18,
+  },
 
 });
 

@@ -19,24 +19,21 @@ export default class Search extends Component {
     render() {
      return (
         <ScrollView> 
-            <Header style={{height: 200}}/>
-                <View style={styles.faq}>        
-                    <View syle={{flexDirection: 'row', flex: 1}}> 
-                        <View style={styles.inputWrap}>
-                        <View style={styles.iconWrap}>
-                            <Image style={styles.icon} resizeMode="contain" />
-                        
-                        </View>
-                        <TextInput 
-                        placeholder="Enter Question Here..." placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(search) => this.setState({search})} value={this.state.search}
-                        />
-                        </View>  
-                        
-                    </View> 
-                    <TouchableOpacity onPress={this._onPressButton}>
-                            <Button raised icon={{name: 'cached'}} title='Search' style={{marginTop: 20}}/>
-                    </TouchableOpacity> 
-                </View>
+            <Header/>
+                <View style={styles.wrapper}>
+                    <View style={styles.faq}>        
+                        <View syle={{flexDirection: 'row', flex: 1}}> 
+                            <View style={styles.inputWrap}>
+                                <TextInput placeholder="Enter Search Here..." placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(search) => this.setState({search})} value={this.state.search}/>
+                            </View>  
+                        </View> 
+                        <TouchableOpacity activeOpacity={.5}>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>Search</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>    
         </ScrollView>
     );
   }
@@ -46,6 +43,10 @@ const styles = StyleSheet.create({
   questions: {
     marginTop: 20,
     marginBottom: 20
+  },
+
+  wrapper: {
+    paddingVertical: 30,
   },
 
   answer: {
@@ -67,25 +68,28 @@ inputWrap: {
     marginVertical: 10,
     height: 40,
     borderBottomWidth: 1,
-    borderBottomColor: "#CCC"
-  },
-
-  iconWrap: {
-    paddingHorizontal: 7,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  icon: {
-    height: 20,
-    width: 20,
+    borderBottomColor: "#CCC",
   },
 
   input: {
     flex: 1,
-    // paddingHorizontal: 10,
+    paddingHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  button: {
+    backgroundColor: '#8DC73F',
+    paddingVertical: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2.5, 
+    borderColor: '#fff',
+  },
+
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18,
   },
 
 faq: {

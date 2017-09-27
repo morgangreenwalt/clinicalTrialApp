@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Picker, TouchableHighlight, TouchableOpacity, TextInput, StyleSheet, Dimensions, Platform } from 'react-native';
+import { View, Text, Image, Picker, TouchableHighlight, ScrollView, TouchableOpacity, TextInput, StyleSheet, Dimensions, Platform } from 'react-native';
 import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 
 // Importing components
@@ -23,14 +23,29 @@ export default class Contact extends Component {
     render() {
 
         return (
+      <ScrollView>     
       <View style={styles.container}>
         <Header/>
           <View style={styles.wrapper}>
 
+            <View syle={{flexDirection: 'row', flex: 1}}>
+                <Text style={{color: '#C0C0C0', marginLeft: 40, fontSize: 18, alignItems: "center", justifyContent: "center"}}>Select Topic</Text>
+                <Picker style={styles.picker} selectedValue={this.state.faqTopic} onValueChange={(topic) => this.setState({faqTopic: topic})}>
+                    <Item label="Eligibility" value="eligibility" />
+                    <Item label="Recurrence" value="recurrence" />
+                    <Item label="Concomitant Meds" value="concomitantMeds" />
+                    <Item label="Adverse Event" value="adverseEvent" />
+                    <Item label="Randomization" value="randomization" />
+                    <Item label="Tumor Assessment" value="tumorAssessment" />
+                    <Item label="Study Procedures" value="studyProcedures" />
+                    <Item label="Study Drug" value="studyDrug" />
+                    <Item label="Labs" value="labs" />
+                    <Item label="Regulatory" value="regulatory" />
+                    <Item label="Other" value="other" />
+                </Picker>
+            </View> 
+
             <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-              </View>
               <TextInput 
                 placeholder="Name" 
                 placeholderTextColor="#C0C0C0"
@@ -39,36 +54,12 @@ export default class Contact extends Component {
             </View>
 
             <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-              </View>
               <TextInput 
                 placeholder="Email" placeholderTextColor="#C0C0C0" style={styles.input} onChangeText={(email) => this.setState({email})} value={this.state.email}
               />
-              
             </View>
 
-            <View syle={{flexDirection: 'row', flex: 1}}>
-              <Text style={{color: '#C0C0C0', marginLeft: 40, fontSize: 18, alignItems: "center", justifyContent: "center"}}>Select Topic</Text>
-              <Picker style={styles.picker} selectedValue={this.state.faqTopic} onValueChange={(topic) => this.setState({faqTopic: topic})}>
-                <Item label="Eligibility" value="eligibility" />
-                <Item label="Recurrence" value="recurrence" />
-                <Item label="Concomitant Meds" value="concomitantMeds" />
-                <Item label="Adverse Event" value="adverseEvent" />
-                <Item label="Randomization" value="randomization" />
-                <Item label="Tumor Assessment" value="tumorAssessment" />
-                <Item label="Study Procedures" value="studyProcedures" />
-                <Item label="Study Drug" value="studyDrug" />
-                <Item label="Labs" value="labs" />
-                <Item label="Regulatory" value="regulatory" />
-                <Item label="Other" value="other" />
-              </Picker>
-            </View> 
-
             <View style={styles.inputWrap}>
-              <View style={styles.iconWrap}>
-                <Image style={styles.icon} resizeMode="contain" />
-              </View>
               <TextInput 
                 placeholderTextColor="#C0C0C0"
                 placeholder="Enter Comments/ Questions Here..." 
@@ -77,14 +68,14 @@ export default class Contact extends Component {
             </View>
 
             <TouchableOpacity activeOpacity={.5}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Submit</Text>
-              </View>
+                <View style={styles.button}>
+                    <Text style={styles.buttonText}>Submit</Text>
+                </View>
             </TouchableOpacity>
 
           </View>
-          <Footer/>
       </View>
+      </ScrollView> 
     );
   }
 }
@@ -102,32 +93,14 @@ const styles = StyleSheet.create({
       marginVertical: 10,
       height: 40,
       borderBottomWidth: 1,
-      borderBottomColor: "#CCC"
-    },
-    iconWrap: {
-      paddingHorizontal: 7,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    icon: {
-      height: 20,
-      width: 20,
+      borderBottomColor: "#CCC",
+      marginLeft: 30,
+      marginRight: 30,
     },
     input: {
       flex: 1,
       paddingHorizontal: 10,
       color: '#C0C0C0',
-    },
-    button: {
-      backgroundColor: "#FF3366",
-      paddingVertical: 20,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 30,
-    },
-    buttonText: {
-      color: "#FFF",
-      fontSize: 18,
     },
     forgotPasswordText: {
       color: "#D8D8D8",
@@ -147,5 +120,20 @@ const styles = StyleSheet.create({
     signupLinkText: {
       color: "#FFF",
       marginLeft: 5,
+    },
+    button: {
+      backgroundColor: '#8DC73F',
+      paddingVertical: 20,
+      alignItems: "center",
+      justifyContent: "center",
+      marginLeft: 30,
+      marginRight: 30,
+      marginTop: 30,
+      marginBottom: 30,
+    },
+  
+    buttonText: {
+      color: "#FFF",
+      fontSize: 18,
     }
   });
