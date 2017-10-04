@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Picker, ScrollView, TouchableHighlight, TouchableOpacity, StyleSheet, TextInput, Dimensions, Platform } from 'react-native';
 import { SearchBar, Button } from 'react-native-elements';
+import helpers from "./utils/helpers";
 const Item = Picker.Item;
 
 import Container from './Container';
@@ -12,12 +13,24 @@ export default class Faq extends Component {
     constructor(props){
         super(props)
         this.state = {
+            FAQ: "123",
             faqTopic: '',
             search: '',
             color: 'red',
             mode: Picker.MODE_DIALOG,
           };
           onValueChange: this.onValueChange
+    }
+    componentDidMount(){
+        fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1',{mode:'cors'}).then(rawdata => rawdata.json()).then((data) => {
+            if (data !== "") {
+                this.setState({ FAQ: data.data, renderFAQ: data.data });
+                console.log("FAQ",this.state.FAQ, data)
+            }
+            console.log("FAQ",this.state.FAQ, data)
+        }).catch(err =>console.log(err))
+        console.log("i mounted")
+        console.log("FAQ outside",this.state.FAQ)
     }
 
     render() {
@@ -44,19 +57,13 @@ export default class Faq extends Component {
                 </Picker>
             </View>          
 
-            <View syle={{flexDirection: 'row', flex: 1}}>
-                  <View style={styles.questions}>
-                        <View syle={{flexDirection: 'row', flex: 1}}>   
-                          <Text h3 style={styles.question}>Questions</Text>
+            {(this.state.renderFAQ) && this.state.renderFAQ.map((data)=>{
+                <View syle={{flexDirection: 'row', flex: 1}}>   
+                    <Text h3 style={styles.question}>{data.Question}</Text>
 
-                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                          <Text h4 style={styles.question}>Questions</Text>
-
-                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-                      </View>
-                  </View>    
-              </View>
+                    <Text style={styles.answer}>{data['Clarification / Answer from Polynoma']}</Text>
+                </View>
+            })}
             </View>
 
             <View syle={{flexDirection: 'row', flex: 1, alignContent: 'center', justifyContent: 'center'}}>
