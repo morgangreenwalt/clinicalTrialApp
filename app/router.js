@@ -18,7 +18,7 @@ import { TabRouter } from 'react-navigation';
 import Faq from "./components/FAQ";
 import Login from "./components/Login";
 import Contact from "./components/Contact";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import SignUp from "./components/SignUp";
 
 
@@ -39,8 +39,8 @@ const TabRoute = TabRouter({
   SignUp: { screen: SignUp },
   Login: { screen: Login },
   FAQ: { screen: Faq },
-  Contact: { screen: Contact },
-  Search: { screen: Search }
+  Contact: { screen: Contact }
+  // Search: { screen: Search }
   }, {
     initialRouteName: 'Login',
   }
@@ -110,14 +110,14 @@ export default class Router extends Component {
                 this.setState({ active: 'FAQ' });
               }}
             />
-            <BottomNavigation.Action
+            {/* <BottomNavigation.Action
               key="Search"
               icon="search"
               label="Search"
               onPress={() => {
                 this.setState({ active: 'Search' });
               }}
-            />
+            /> */}
             <BottomNavigation.Action
               key="Contact"
               icon="people"

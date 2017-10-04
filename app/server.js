@@ -13,7 +13,6 @@ var PORT = process.env.PORT || 3000;
 
 // requiring faq model
 var Faq = require('./models/Faq.js');
-var Article = require('./models/Article.js');
 
 var zendesk = new Zendesk({
  url: 'https://clintrial.zendesk.com', // https://example.zendesk.com 

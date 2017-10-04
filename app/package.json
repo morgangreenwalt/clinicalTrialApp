@@ -6,14 +6,13 @@
         "start": "react-native start",
         "test": "jest"
     },
-
     "rnpm": {
         "assets": [
             "./assets/fonts/"
         ]
     },
-
     "dependencies": {
+        "axios": "^0.16.2",
         "body-parser": "^1.18.2",
         "express": "^4.15.5",
         "moment": "^2.18.1",

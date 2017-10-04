@@ -1,4 +1,3 @@
-var Article = require("../models/Article.js");
 var Faq = require("../models/Faq.js");
 
 // / // Our scraping tools
@@ -6,28 +5,35 @@ var request = require("request");
 
 module.exports = function(app) {
 
-    // route to receive all faq's from db
+
+// route to receive all faq's from db
 app.get('/api/faq', function (req, res) {
-    console.log(Faq.find({}));
+    // console.log(Faq.find({}));
     Faq.find({}, function(error, doc){
         if (error) {
             console.log(error);
         }
         else {
-            console.log(doc);
-            debugger;
+            // console.log(doc);
             res.json(doc);
         }
     });
 
 });
 
-app.get('/api/zendesk/newTicket/:comment', function (req, res) {
+app.get('api/zendesk/checkTickets', function (req, res) {
+    zendesk.tickets.list('sort_by=status&sort_order=desc').then(function(tickets){
+        console.log(tickets);
+      });
+});
+
+app.get('/api/zendesk/newTicket/:comment/:firstName/:lastName/:email', function (req, res) {
 
     zendesk.tickets.create({
         subject: 'test subject',
         comment: {
-          body: req.params.comment
+          body: 'QUESTION: '+req.params.comment+'\n\nNAME: '+req.params.firstName+
+                ' '+req.params.lastName+'\nEMAIL: '+req.params.email
         }
       }).then(function(result){
         console.log(result);
@@ -35,95 +41,5 @@ app.get('/api/zendesk/newTicket/:comment', function (req, res) {
       });
         
 });
-
-
-// // Route to scrape Ebay.com & save data to MongoDB
-// app.post("/scrape", function(req, res) {
-//     var gender = req.body.gender;
-//     var size = req.body.size;
-//     var brand = req.body.brand;
-//     var queryUrl;
-//     if (gender === "men") {
-//         queryUrl = "https://www.ebay.com/sch/i.html?_sacat=0&_nkw=mens+"+brand+"+"+size+"&_frs=1"
-//     } else if (gender === "women") {
-//         queryUrl = "https://www.ebay.com/sch/i.html?_sacat=0&_nkw=womens+"+brand+"+"+size+"&_frs=1"
-//     }
-
-//     request(queryUrl, function(error, response, html) {
-//         var $ = cheerio.load(html);
-//         var result = {};
-
-//         $("li.lvresult").each(function(i, element) {
-//             result.link = $(element).find("a").attr("href");
-//             result.title = $(element).find("h3").find("a").text().toLowerCase();
-//             result.image = $(element).find("img").attr("src");
-//             result.price = $(element).find("li").find("span").text();
-//             result.size = size;
-//             result.gender = gender;
-//             result.brand = brand;
-
-//             var newEntry = new Boot(result);
-
-//             newEntry.save(function(error, doc) {
-//                 if (error) {
-//                     console.log(error);
-//                 } else {
-//                     console.log(doc);
-//                 }
-//             });
-//         });
-//         console.log(result);
-//         res.redirect("/");
-//     });
-// });
-
-
-
-// // Route to get all boots data
-// app.get("/", function(req, res) {
-//     COLLECTION_GOES_HERE.find({}, function(err, data) {
-//     if (err) {
-//         throw err;
-//     } else {
-//         res.send(data);
-//     }
-//     });
-// });
-
-// // // Route to update a boot to "unwatched"
-// app.post("/unwatch/:id", function(req, res) {
-//     Boot.update({ _id: req.params.id }, { $set: { watch: false }}, function(err, data) {
-//     if (err) {
-//         throw err;
-//     } else {
-//         res.redirect("/");
-//     }
-//     });
-// });
-
-// // Route to reset filter & db collection
-// app.post("/reset", function(req, res) {
-//     Boot.remove(function(err, data){
-//         if(err){ 
-//             throw err;
-//         } else{
-//             console.log('No Of Documents deleted:');
-//             // res.redirect("/");
-//             res.send(data);
-//         }
-//     });
-// });
-
-// // // Route to view a specific boot JSON
-// app.get("/boots/:id", function(req, res) {
-//     Boot.findOne({_id: req.params.id}).populate("comments").exec(function(error, doc) {
-//         if (error) {
-//             res.send(error);
-//         }
-//         else {
-//             res.send(doc);
-//         }
-//     });
-// });
 
 }
