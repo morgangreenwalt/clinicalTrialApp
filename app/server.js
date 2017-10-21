@@ -15,10 +15,10 @@ var PORT = process.env.PORT || 3000;
 var Faq = require('./models/Faq.js');
 
 var zendesk = new Zendesk({
- url: 'https://clintrial.zendesk.com', // https://example.zendesk.com 
- email: 'ryanglennarnett@gmail.com', // me@example.com 
- token: 'nv3iDcCAMTWVb4r58yGs9i6YK4gsjZuGLPBysrIX' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT 
-});
+    url: 'https://clinicaltrial.zendesk.com', 
+    email: 'clinicalTrialApp@gmail.com', 
+    token: 'bsYPyw55OYwo1ruXDdE2QUwOXeDpKHZItFHNWPsC' 
+   });
 
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
@@ -45,6 +45,20 @@ var db = mongoose.connection;
 
 // Require in routes
 require("./controllers/routes.js")(app);
+
+app.get('/api/zendesk/newTicket/:comment/:name/:email', function (req, res) {
+    console.log('route is right');
+    zendesk.tickets.create({
+        subject: 'test subject',
+        comment: {
+          body: 'QUESTION: '+req.params.comment+'\n\nNAME: '+req.params.name+'\nEMAIL: '+req.params.email
+        }
+      }).then(function(result){
+        console.log(result);
+        res.send(result);
+      }).catch((err) => console.log(err));
+        
+});
 
 app.get('*', function (request, response){
     // response.sendFile(path.resolve(__dirname, 'public', 'index.html'))

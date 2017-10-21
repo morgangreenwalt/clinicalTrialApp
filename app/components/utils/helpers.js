@@ -4,7 +4,10 @@ var helpers = {
 
 // Helper examples below 
 // ==================================================================
-
+  newTicket: function(inquiry, name, email) {
+      return axios.get("http://localhost:3000/api/zendesk/newTicket/"+inquiry+"/"+name+"/"+email);    
+      // return axios.get("/api/zendesk/newTicket/"+inquiry+"/"+name+"/"+email);
+  }, 
   getAllFAQ: function() {
       return axios.get("/api/faq");
   },

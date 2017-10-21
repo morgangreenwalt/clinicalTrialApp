@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Picker, TouchableHighlight, ScrollView, TouchableOpacity, TextInput, StyleSheet, Dimensions, Platform } from 'react-native';
+import { View, Alert, Text, Image, Picker, TouchableHighlight, ScrollView, TouchableOpacity, TextInput, StyleSheet, Dimensions, Platform } from 'react-native';
 import { SearchBar, Button, Grid, Col, Row } from 'react-native-elements';
 
 // Importing components
@@ -7,6 +7,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Container from './Container';
 const Item = Picker.Item;
+
+import helpers from "./utils/helpers.js";
 
 export default class Contact extends Component {  
     constructor(props){
@@ -18,7 +20,44 @@ export default class Contact extends Component {
       inquiry: '',
       faqTopic: ''
     };
+    this.onSubmit = this.onSubmit.bind(this);
 }
+
+onSubmit() {
+  
+    console.log('trying to submit');
+    var name = this.state.name;
+    var email = this.state.email;
+    var inquiry = this.state.inquiry;
+    console.log(name);
+    console.log(email);
+    console.log(inquiry);
+    helpers.newTicket(inquiry, name, email);
+
+    this.state.name = '';
+    this.state.email = '';
+    this.state.inquiry = '';
+
+          // fetch('/api/zendesk/newTicket/'+inquiry+'/'+name+'/'+email)
+          // .then(response => response.json())
+          // .then((ticket) => { this.setState({ 
+          //     name: '',
+          //     email: '',
+          //     inquiry: '',
+          //     });
+          //     //Alert.alert('Thanks '+name+'! Your question has been submitted.');
+  
+          // }).catch((err) => console.log(err));
+          Alert.alert(
+            'Thanks '+name+'!',
+            'Your question has been submitted. An answer should arrive by email soon.',
+            [
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            { cancelable: false }
+          )
+          this.forceUpdate();
+  }
 
     render() {
 
@@ -67,7 +106,7 @@ export default class Contact extends Component {
               />
             </View>
 
-            <TouchableOpacity activeOpacity={.5}>
+            <TouchableOpacity activeOpacity={.5} onPress={this.onSubmit}>
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>Submit</Text>
                 </View>
