@@ -20,6 +20,7 @@ import Login from "./components/Login";
 import Contact from "./components/Contact";
 // import Search from "./components/Search";
 import SignUp from "./components/SignUp";
+import Resources from "./components/Resources";
 
 
 const uiTheme = {
@@ -38,6 +39,7 @@ const uiTheme = {
 const TabRoute = TabRouter({
   SignUp: { screen: SignUp },
   Login: { screen: Login },
+  Resources: { screen: Resources },
   FAQ: { screen: Faq },
   Contact: { screen: Contact }
   // Search: { screen: Search }
@@ -103,6 +105,14 @@ export default class Router extends Component {
               onPress={() => this.setState({ active: 'Login' })}
             />
             <BottomNavigation.Action
+              key="Resources"
+              icon="bookmark"
+              label="Resources"
+              onPress={() => {
+                this.setState({ active: 'Resources' });
+              }}
+            />
+            <BottomNavigation.Action
               key="FAQ"
               icon="question-answer"
               label="FAQ"
@@ -125,7 +135,6 @@ export default class Router extends Component {
               onPress={() => this.setState({ active: 'Contact' })}
             />
           </BottomNavigation>
-
         </Container>
       </ThemeProvider>
     );
