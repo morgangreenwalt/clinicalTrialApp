@@ -65,6 +65,21 @@ app.get('*', function (request, response){
     response.sendFile(path.resolve(__dirname, 'index.ios.js'))
   });
 
+app.get('/api/faq', function (req, res) {
+    console.log("Im here!!!")
+    // console.log(Faq.find({}));
+    Faq.find({}, function(error, doc){
+        if (error) {
+            console.log(error);
+        }
+        else {
+            // console.log(doc);
+            res.json(doc);
+        }
+    });
+
+});
+
 
 // Show any mongoose errors
 db.on("error", function(error) {

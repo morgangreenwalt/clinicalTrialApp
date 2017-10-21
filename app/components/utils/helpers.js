@@ -9,7 +9,8 @@ var helpers = {
       // return axios.get("/api/zendesk/newTicket/"+inquiry+"/"+name+"/"+email);
   }, 
   getAllFAQ: function() {
-      return axios.get("/api/faq");
+    return axios.get("http://localhost:3000/api/faq");    
+    // return axios.get("/api/faq");
   },
   getAllFAQWithCategory: function() {
     return axios.get("/api/faq/:category",{Category: "Protocol"});

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Picker, ScrollView, TouchableHighlight, TouchableOpacity, StyleSheet, TextInput, Dimensions, Platform } from 'react-native';
 import { SearchBar, Button } from 'react-native-elements';
+import helpers from "./utils/helpers";
 const Item = Picker.Item;
 
 import Container from './Container';
@@ -12,12 +13,30 @@ export default class Faq extends Component {
     constructor(props){
         super(props)
         this.state = {
+            FAQ: '',
+            renderFAQ:'',
             faqTopic: '',
             search: '',
             color: 'red',
             mode: Picker.MODE_DIALOG,
           };
           onValueChange: this.onValueChange
+    }
+    componentDidMount(){
+        helpers.getAllFAQ().then((data) => {
+            if (data !== "") {
+                this.setState({ FAQ: data.data, renderFAQ: data.data },()=> {console.log("FAQ callback", this.state.FAQ, "RenderFAQ", this.state.renderFAQ)})
+            }
+        })
+        // fetch('http://localhost:3000/api/faq').catch(err =>console.log(err)).then(rawdata => rawdata.json()).then((data) => {
+        //     if (data !== "") {
+        //         this.setState({ FAQ: data, renderFAQ: data }, ()=> {console.log("FAQ callback", this.state.FAQ, "RenderFAQ", this.state.renderFAQ)});
+        //         // console.log("FAQ1 ",this.state.renderFAQ, data)
+        //     }
+        //     // console.log("FAQ2 ",this.state.renderFAQ, data)
+        // })
+        // console.log("i mounted")
+        // console.log("FAQ outside",this.state.FAQ)
     }
 
     render() {
@@ -44,19 +63,14 @@ export default class Faq extends Component {
                 </Picker>
             </View>          
 
-            <View syle={{flexDirection: 'row', flex: 1}}>
-                  <View style={styles.questions}>
-                        <View syle={{flexDirection: 'row', flex: 1}}>   
-                          <Text h3 style={styles.question}>Questions</Text>
-
-                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                          <Text h4 style={styles.question}>Questions</Text>
-
-                          <Text style={styles.answer}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-                      </View>
-                  </View>    
-              </View>
+            {this.state.renderFAQ} =>{
+                
+                    <View syle={{flexDirection: 'row', flex: 1}}>   
+                        <Text style={styles.question}>{data.Question}</Text>
+                    <Text style={styles.answer}>{data['Clarification / Answer from Polynoma']}</Text>
+                    </View>
+                
+            })}
             </View>
 
             <View syle={{flexDirection: 'row', flex: 1, alignContent: 'center', justifyContent: 'center'}}>
