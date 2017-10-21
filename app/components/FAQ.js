@@ -13,7 +13,8 @@ export default class Faq extends Component {
     constructor(props){
         super(props)
         this.state = {
-            FAQ: "123",
+            FAQ: '',
+            renderFAQ:'',
             faqTopic: '',
             search: '',
             color: 'red',
@@ -22,15 +23,20 @@ export default class Faq extends Component {
           onValueChange: this.onValueChange
     }
     componentDidMount(){
-        fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1',{mode:'cors'}).then(rawdata => rawdata.json()).then((data) => {
+        helpers.getAllFAQ().then((data) => {
             if (data !== "") {
-                this.setState({ FAQ: data.data, renderFAQ: data.data });
-                console.log("FAQ",this.state.FAQ, data)
+                this.setState({ FAQ: data.data, renderFAQ: data.data },()=> {console.log("FAQ callback", this.state.FAQ, "RenderFAQ", this.state.renderFAQ)})
             }
-            console.log("FAQ",this.state.FAQ, data)
-        }).catch(err =>console.log(err))
-        console.log("i mounted")
-        console.log("FAQ outside",this.state.FAQ)
+        })
+        // fetch('http://localhost:3000/api/faq').catch(err =>console.log(err)).then(rawdata => rawdata.json()).then((data) => {
+        //     if (data !== "") {
+        //         this.setState({ FAQ: data, renderFAQ: data }, ()=> {console.log("FAQ callback", this.state.FAQ, "RenderFAQ", this.state.renderFAQ)});
+        //         // console.log("FAQ1 ",this.state.renderFAQ, data)
+        //     }
+        //     // console.log("FAQ2 ",this.state.renderFAQ, data)
+        // })
+        // console.log("i mounted")
+        // console.log("FAQ outside",this.state.FAQ)
     }
 
     render() {
@@ -57,12 +63,13 @@ export default class Faq extends Component {
                 </Picker>
             </View>          
 
-            {(this.state.renderFAQ) && this.state.renderFAQ.map((data)=>{
-                <View syle={{flexDirection: 'row', flex: 1}}>   
-                    <Text h3 style={styles.question}>{data.Question}</Text>
-
+            {this.state.renderFAQ} =>{
+                
+                    <View syle={{flexDirection: 'row', flex: 1}}>   
+                        <Text style={styles.question}>{data.Question}</Text>
                     <Text style={styles.answer}>{data['Clarification / Answer from Polynoma']}</Text>
-                </View>
+                    </View>
+                
             })}
             </View>
 
